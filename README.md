@@ -1,4 +1,5 @@
 # STIT_frontendchallenge
+# API has a limit (resets at 3pm)
 
 Loading initial restaurants based on location and map marker zoom\
 ![gif1](https://media.giphy.com/media/hVJ94IQHfZcUvV5ONS/giphy.gif)</br>
