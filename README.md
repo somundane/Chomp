@@ -1,4 +1,4 @@
 # STIT_frontendchallenge
 
-![github] https://giphy.com/embed/hVJ94IQHfZcUvV5ONS
+![gif1](https://giphy.com/embed/hVJ94IQHfZcUvV5ONS)
 
