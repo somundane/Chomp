@@ -215,7 +215,7 @@ function showRestos(){
               }
 
               //create cards with resto info required
-              $(".card-block").hide().append("<div class='card'>\n" +
+              $(".card-block").append("<div class='card' id='card"+i+"'>\n" +
                 "<div class='card-header bg-red'>" + result.name + "</div>\n" +
                 "<div class='card-body'>\n" +
                 "<div class='card-title'>" + result.cuisines + "</div>\n" +
@@ -223,7 +223,7 @@ function showRestos(){
                 "<p class='card-text'><small class='text-muted'>" + price + "</small>"+
                 "<a id = 'detail"+i+"' class='details' data-toggle='popover'> Details </a> </p>\n" +
                 "</div>\n" +
-                "</div>").show("slow");
+                "</div>");
 
               //resto coordinates
               coor = {
@@ -234,14 +234,15 @@ function showRestos(){
               makeMarker(coor, result.name);
               }
 
-              $(".loader").hide();
-              $(".form-inline").show();
+              $("#card"+i).hide().show("slow");
 
               //this is for details view
               setPopover(result, i);
             }
           })
         }
+        $(".loader").hide();
+        $(".form-inline").show();
       },
       //for when user input yields no search results
       statusCode: {
