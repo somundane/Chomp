@@ -254,46 +254,31 @@ function showRestos(){
 }
 
 //popovers for required resto details. Parameter is resto index in array
-function setPopover(index) {
-  $.ajax({
-    url: endpoint_resto + "?res_id=" + list[index],
-    contentType: "application/json",
-    dataType: 'json',
-    beforeSend: function(xhr){xhr.setRequestHeader('user-key', apiKey);},
-    success: function(result){
-      //assuming resto name appears as error
-      if( result.name == "error" ) {
-        alert("Sorry, trouble encountered");
-      }
-      else {
-        //organize info needed for details
-        let name, rating, reviews, number, addy, dist;
-          name = result.name;
-          rating = result.user_rating.aggregate_rating;
-          reviews = result.all_reviews_count;
-          number = result.phone_numbers;
-          addy = result.location.address;
-          dist = getDistance(pos.lat, pos.long, parseFloat(result.location.latitude), parseFloat(result.location.longitude));
+function setPopover(result, index) {
+  //organize info needed for details
+  let name, rating, reviews, number, addy, dist;
+    name = result.name;
+    rating = result.user_rating.aggregate_rating;
+    reviews = result.all_reviews_count;
+    number = result.phone_numbers;
+    addy = result.location.address;
+    dist = getDistance(pos.lat, pos.long, parseFloat(result.location.latitude), parseFloat(result.location.longitude));
 
-          message = "Name: " + name +
-            "<br />Rating: " + rating +
-            "<br />Reviews: " + reviews +
-            "<br />Phone: " + number +
-            "<br />Address : " + addy +
-            "<br />Distance: " + dist.toFixed(2) + " miles";
+  message = "Name: " + name +
+    "<br />Rating: " + rating +
+    "<br />Reviews: " + reviews +
+    "<br />Phone: " + number +
+    "<br />Address : " + addy +
+    "<br />Distance: " + dist.toFixed(2) + " miles";
 
-      }
-
-      //initialize popover
-      $('#detail'+index).popover({
-        trigger: 'hover',
-        placement: 'left',
-        html: true,
-        container: 'body',
-        content: message
-      });   
-    }
-  })
+  //initialize popover
+  $('#detail'+index).popover({
+    trigger: 'hover',
+    placement: 'left',
+    html: true,
+    container: 'body',
+    content: message
+  });   
 }
 
 //get distance via lat and long, convert to miles
